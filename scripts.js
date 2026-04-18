@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    
+
     // --- Mobile Menu Logic ---
     const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
     const navLinks = document.querySelector('.nav-links');
@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Intersection Observer for Fade-in Animations ---
     const faders = document.querySelectorAll('.fade-in');
-    
+
     const appearOptions = {
         threshold: 0.15,
         rootMargin: "0px 0px -50px 0px"
@@ -54,14 +54,14 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Sticky CTA Visibility Logic ---
     const stickyCta = document.querySelector('.sticky-cta');
     const heroSection = document.querySelector('.hero');
-    
+
     if (stickyCta && heroSection) {
         const ctaObserverOptions = {
             threshold: 0,
             rootMargin: "-200px 0px 0px 0px"
         };
-        
-        const ctaObserver = new IntersectionObserver(function(entries) {
+
+        const ctaObserver = new IntersectionObserver(function (entries) {
             entries.forEach(entry => {
                 if (!entry.isIntersecting) {
                     // Passed hero section, show sticky ctas
@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
         }, ctaObserverOptions);
-        
+
         ctaObserver.observe(heroSection);
     }
 
@@ -86,13 +86,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Thumbnail swap logic
     galleryThumbs.forEach(thumb => {
-        thumb.addEventListener('click', function() {
+        thumb.addEventListener('click', function () {
             mainGalleryImg.src = this.src;
         });
     });
 
     // Open lightbox
-    if(mainGalleryImg && lightbox) {
+    if (mainGalleryImg && lightbox) {
         mainGalleryImg.parentElement.addEventListener('click', () => {
             lightboxImg.src = mainGalleryImg.src;
             lightbox.classList.add('active');
@@ -100,15 +100,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Close lightbox
-    if(closeLightboxBtn) {
+    if (closeLightboxBtn) {
         closeLightboxBtn.addEventListener('click', () => {
             lightbox.classList.remove('active');
         });
     }
-    
-    if(lightbox) {
+
+    if (lightbox) {
         lightbox.addEventListener('click', (e) => {
-            if(e.target === lightbox) {
+            if (e.target === lightbox) {
                 lightbox.classList.remove('active');
             }
         });
@@ -116,7 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Form validation ---
     const contactForm = document.getElementById('lead-form');
-    if(contactForm) {
+    if (contactForm) {
         contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
             // Basic simulation of success
@@ -125,7 +125,7 @@ document.addEventListener('DOMContentLoaded', () => {
             btn.innerHTML = '<i class="fa-solid fa-check"></i> Request Sent';
             btn.style.backgroundColor = '#25D366';
             btn.style.color = '#fff';
-            
+
             setTimeout(() => {
                 btn.innerHTML = originalText;
                 btn.style.backgroundColor = '';
@@ -139,10 +139,10 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             const targetId = this.getAttribute('href');
-            if(targetId === '#') return;
-            
+            if (targetId === '#') return;
+
             const targetEl = document.querySelector(targetId);
-            if(targetEl) {
+            if (targetEl) {
                 e.preventDefault();
                 targetEl.scrollIntoView({
                     behavior: 'smooth'
